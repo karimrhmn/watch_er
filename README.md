@@ -2,7 +2,7 @@
 ### Introduction
 The goal of my watcher program is to detect video camera footage and decipher what's happening on screen using existing frameworks like Googles Mediapipe and then make some functioning code from the readings. - 🤳
 ### Features 
-The current application can be downloaded and run on any IDE and hardware that has camera access and the prerequistes, the code currently executes and displays Mediapipe's face and hand landmarks on screen however no code is set up after that to function anything. - 😀
+The current application can be downloaded and run on any IDE and hardware that has camera access and the prerequistes, the code currently executes and displays Mediapipe's face and hand landmarks on screen however no code is set up after that to function anything. The code imports Media pipe into two different files, hand and face tracking modules and then uses a main tracking file to run the code together. - 😀
 ### Working on
 I plan to make the next version output whatever number you have held up at the camera. - 🏢
 ## Bugs
