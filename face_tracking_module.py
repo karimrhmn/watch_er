@@ -45,9 +45,6 @@ class faceDetector:
                     self.mpDraw.draw_landmarks(img, face, self.mp_face.FACEMESH_CONTOURS)
         return img 
 
-               
-
-
 
 def main():
     #For fps calculation

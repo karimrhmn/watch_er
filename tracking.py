@@ -10,9 +10,9 @@ c_time = 0
 #Capture from webcam(0)
 cap = cv2.VideoCapture(0)
 
+#Reference modules
 hand_detector = htm.handDetector()
 face_detector = ftm.faceDetector()
-
 
 while True:
 

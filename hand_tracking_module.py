@@ -41,24 +41,23 @@ class handDetector():
                         self.mpDraw.draw_landmarks(img, hand, self.mp_hands.HAND_CONNECTIONS)
             return img    
 
-    def findPosition(self, img, hand_num=0, draw=True):
+    def findPosition(self, img, draw=True):
 
         lm_list = []
 
         if self.hand_results.multi_hand_landmarks:
-            my_hand = self.hand_results.multi_hand_landmarks[hand_num]
+            #Hand landmarks for each hand
+            for hand in self.hand_results.multi_hand_landmarks:
+            
+                for id, lm in enumerate(hand.landmark):
+                    #print(id, lm) un-comment to see how lm's are presented
+                    h, w, c = img.shape
+                    cx, cy = int(lm.x * w), int(lm.y * h)
+                    lm_list.append([id, cx, cy])
 
-            for id, lm in enumerate(my_hand.landmark):
-                h, w, c = img.shape
-                cx, cy = int(lm.x * w), int(lm.y * h)
-
-                #print(f"ID: {id}", cx, cy)
-                lm_list.append([id, cx, cy])
-                if draw:    
                     cv2.circle(img, (cx, cy), 10, (255,0,255),cv2.FILLED)
-        
-        return lm_list
 
+        return lm_list
 
 
 def main():
@@ -76,13 +75,13 @@ def main():
 
         #Read the frame
         success, img = cap.read()
-        img = detector.find_hands(img)
+        img = detector.find_hands(img, draw=True)
         
         #Finding key points using hand solutions
         # and printing it
         lm_list = detector.findPosition(img)
         if len(lm_list) != 0:
-            print(lm_list[4])
+            print(lm_list[4]) # Print a hand lm here! 4 == thumb tip
         
 
         #For fps calculation
